@@ -5,6 +5,10 @@ And other things I tell myself when I am starting an article. 
 
 This is more of a brain dump of my learning than something I wrote because of marketing purposes but I have tried to optimize this for as much readability as possible. So, enjoy!
 
+## INDEX 
+
+[What is it?] (#SQL---What-is-it?)
+
 Let’s do a brief introduction. Meet SQL.
 
 ### SQL — What is it?
