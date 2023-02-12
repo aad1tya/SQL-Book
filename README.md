@@ -8,6 +8,13 @@ This is more of a brain dump of my learning than something I wrote because of ma
 ## INDEX 
 
 [What is it?](#sqlwhat-isit)
+[Why use SQL?](#but-why-usesql)
+[Fields of SQL use](#fields-where-sql-is-used-extensively)
+[SQL: The HOW](#sql-thehow)
+[Database Management Systems](#database-management-systemsand-why-we-are-going-to-use-postgresql)
+[How to install PostgreSQL](#how-to-install-postgresql)
+[PostgreSQL Datatypes](#postgresql-datatypes)
+
 
 Let’s do a brief introduction. Meet SQL.
 
