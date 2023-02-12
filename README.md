@@ -7,7 +7,7 @@ This is more of a brain dump of my learning than something I wrote because of ma
 
 ## INDEX 
 
-[What is it?] (#SQL---What-is-it?)
+[What is it?](#SQL---What-is-it?)
 
 Let’s do a brief introduction. Meet SQL.
 
