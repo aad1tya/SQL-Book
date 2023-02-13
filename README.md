@@ -58,7 +58,7 @@ In plain terms, for what we want to do, SQL is faster, has necessary features to
 
 Now to remind you that SQL is no replacement for Excel: Excel’s much simpler to use for basic tasks, has a nice user interface and still capable of doing a large number of things you won’t need or want SQL for.
 
-**SPECIFYING THE APPLICATIONS OF SQL**
+### SPECIFYING THE APPLICATIONS OF SQL
 
 Here is something that I came across the web while looking to generalize the applications of SQL.
 
@@ -117,7 +117,7 @@ Firstly, there are two types of databases, relational and non-relational. Also k
 4.  PostgreSQL
 5.  MSSQL
 
-**MYSQL**
+#### MYSQL
 
 This is one of the most popular relational database systems out there. It used be an open source application but now Oracle owns it. Because of the popularity and the base of C/C++, it is easy to use on any type of system. 
 
@@ -125,7 +125,7 @@ Some of the advantages being **Free Installation**, **Simple to use**, and **Clo
 
 Disadvantages being it has a few Scalability challenges and not being fully open source.
 
-**MARIADB**
+#### MARIADB
 
 MariaDB is an open source fork of MySQL. The relevant user experience of using a DBMS is same as that of MySQL.
 
@@ -133,7 +133,7 @@ Even after being open source, a software doesn’t have to be less secure. Maria
 
 The disadvantage of using MariaDB arrives from it being dependent on MySQL. What if they release a feature that is only available on MySQL? Another disadvantage also being that MariaDB’s user community is still small, so finding help if you’re stuck is less likely than others.
 
-**ORACLE**
+#### ORACLE
 
 Compared to the previous two entries, Oracle is a database that is fully proprietary. The recent releases also focus hugely on cloud computing.
 
@@ -143,7 +143,7 @@ Some pros of Oracle are **strong support**, **documents**, and **increased capac
 
 If it’s proprietary, there are going to be certain disadvantages of using it, first one obviously being very costly for the full version. The other two are that it has a **difficult learning curve**, and **high resource munching**.
 
-**POSTGRESQL — The one we’ll use**
+#### POSTGRESQL — The one we’ll use
 
 Completely open source. It is owned by PostgreSQL Global Development Group. It is a lot similar to MySQL, including it being also very popular. The focus of PostgresSQL is on making standards of compliance stronger and increasing extensibility.  
 It provides plethora of tools to analyze data as well.
@@ -152,7 +152,7 @@ PostgreSQL has amazing **scalability**, **easy integration to 3rd party tools**,
 
 Nothing is perfect, PostgreSQL has cons like **documentation that is not standardized** leading to inconsistency, and there’s always the chance that if something goes wrong developers will notice it too late because **lack of reporting issues**.
 
-**MSSQL**
+#### MSSQL
 
 Owned by Microsoft, it’s proprietary. It has T-SQL, the Transact SQL, which is just what Microsoft provides in addition to the standard SQL.
 
@@ -170,7 +170,7 @@ Installing PostgreSQL can be a typical task varying from different platforms. So
 
 In this, we will look on how to install PostgreSQL and run the very first command.
 
-**Install PostgreSQL for Windows/Linux**
+#### Install PostgreSQL for Windows/Linux 
 
 1.  Follow this [link](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads). Click on the download link that best suits your system OS and architecture.
 2.  i)   
@@ -254,6 +254,8 @@ Then press save. As you would see on the left pane, PostgreSQL has created a new
 
 A database can have multiple tables, schemas, etc. Let’s understand more by taking an example of creation of a table.
 
+#### Running your first query
+
 We are going to create a table of employees, their first and last name, and email ID.
 
 CREATE TABLE employees  
@@ -297,6 +299,8 @@ That’s it. The asterisk symbol is a wildcard that tells SQL to select EVERYTHI
 ![](https://cdn-images-1.medium.com/max/1000/1*HDi5am8seuKain82yP8pwQ.png)
 
 As you can see it shows the table with column names and their data types. But it’s looking very empty in here. That’s because we never _inserted_ any data in our table. Time to do just that!
+
+#### Inserting data into a column in SQL
 
 Here’s how you can insert data into a column in SQL:
 
@@ -363,14 +367,14 @@ Without going into much detail, PostgreSQL uses a variable called lc_monetary to
 
 The datatypes in PostgreSQL can be categorized into the following:
 
-**BOOLEAN**
+#### BOOLEAN
 
 Values that can only be either one of two things are stored using this datatype. 
 
 Or in other terms, values that can either be true or false should follow this datatype.   
 Anything inserted under this datatype with value true, 1, t, y, and yes gets converted to ‘true’. On the other hand, the values false, 0, f, and no gets converted to ‘false’.
 
-**CHARACTER**
+#### CHARACTER
 
 Character string data types in PostgreSQL can be inserted in three ways.
 
@@ -391,7 +395,7 @@ This datatype is not a part of the standard SQL standard but there are similar d
 
 When you are unsure the size of the input text, this data type can be used. 
 
-**NUMERIC**
+#### NUMERIC
 
 With numeric data types, you can store values that are, well, numbers! Two types of number types are present in SQL that are further divided into subcategories but I will include when and where to use each in the end, so it’ll be easier.
 
@@ -413,7 +417,7 @@ In the teachers table we created above, there was a bigserial datatype which inc
 
 And obviously, these are used for IDs and indices, the auto-incrementing data type does not range to negative values.
 
-**DECIMALS**
+#### DECIMALS
 
 Decimals represent integers in addition to a fraction of an integer. In SQL, they are represented in two forms:
 
@@ -461,7 +465,7 @@ Here are a few tips I came across the web on using number data types:
 -   Float types save space due to how they are stored in the memory but if you want your calculations to be exact, always use _numeric_ or _decimal._
 -   Use a large enough data type. When working with decimals, set precision and scale accordingly and when working with whole numbers, use a more than sufficient data type like _bigint_ unless you are extremely sure that a lower integer data type will be able to hold your data.
 
-**DATE & TIME**
+#### DATE & TIME
 
 For date and time, PostgreSQL provides major data types:
 
@@ -515,9 +519,9 @@ This is the output you get, as you can whatever interval value that was in inter
 
 In the query, we used the AS keyword in SQL to give an alias to the newly computed column. Computed columns are formally called expressions in SQL.
 
-**_MORE TYPES IN POSTGRESQL_**
+#### _MORE TYPES IN POSTGRESQL_
 
-i). Arrays
+i). **Arrays**
 
 Data in rows can also be stored as Arrays in PostgreSQL. They are variable and multidimensional. To input into an array, you can use {} braces to represent a single input. For example:
 
@@ -544,33 +548,20 @@ Running the above query yields the following results.
 
 ![](https://cdn-images-1.medium.com/max/1000/1*wYkOzOaa0N_ifZj-HFX1og.png)
 
-ii). UUID
+ii). **UUID**
 
 These are unique identifiers that have a better chance of uniqueness than the SERIAL data type that only provides unique values only within a single database. 
 
 An example being:
 
-  
-
 I will use these later in relevant situations.
-
-**ARRAY**
-
-**JSON**
-
-**hSTORE**
-
-**SPECIAL**
-
-**DATA DICTIONARIES AND THEIR IMPORTANCE**
-
   
 
-**SQL QUERIES**
+### SQL QUERIES
 
 For a better understanding of SQL and various types of queries you can execute, let’s divide them up!
 
-**Data Definition Queries**:
+#### Data Definition Queries:
 
 All the statements in Data Definition category are used to define or change database schemas. So that data can be inserted later according to that schema.
 
@@ -659,7 +650,7 @@ Some things you should know that are different. DROP vs TRUNCATE
 
 The queries discussed above can be used in the combination of each other. An example of which you have already seen above. But more will be used later and it will become natural with time.
 
-**Data Query Language and Data Exploration:**
+#### Data Query Language and Data Exploration:
 
 The DQL statements are used to query the database. Let me correct myself. The DQL statement is used to query the database. That’s because, there is only one.
 
@@ -885,7 +876,7 @@ Both return the same result below but the latter looks cleaner and you can add a
 
 ![](https://cdn-images-1.medium.com/max/1000/1*772SOPYJPgha46tRY-ppaQ.png)
 
-SQL Pattern Matching
+#### SQL Pattern Matching
 
 You can find out what column has values that match your specific pattern. For example, you might want to find employee names that start with U. Or, a better example would be that you want to find out employees whose phone numbers start with “515”. 
 
