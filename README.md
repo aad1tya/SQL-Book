@@ -13,7 +13,13 @@ This is more of a brain dump of my learning than something I wrote because of ma
 - [SQL: The HOW](#sql-thehow)
 - [Database Management Systems](#database-management-systemsand-why-we-are-going-to-use-postgresql)
 - [How to install PostgreSQL](#how-to-install-postgresql)
-- [PostgreSQL Tutorial](#postgresql-datatypes)
+    - [Running your first query](#running-your-first-query)
+    - [Inserting data into a column](#inserting-data-into-a-column-in-sql)
+- [PostgreSQL Datatypes](#postgresql-datatypes)
+    - [Boolean](#boolean)
+    - [Character](#character)
+    - [Numeric](#numeric)
+    - [Decimals](#decimals)
 
 
 Let’s do a brief introduction. Meet SQL.
@@ -257,14 +263,16 @@ A database can have multiple tables, schemas, etc. Let’s understand more by ta
 #### Running your first query
 
 We are going to create a table of employees, their first and last name, and email ID.
-
+    
+```
 CREATE TABLE employees  
 (  
 first_name varchar(50),  
 last_name varchar(50),  
 email_id varchar(100)  
 );
-
+```
+    
 Notice the syntax, first we tell SQL that we want to CREATE something, it’s a TABLE, and then we call that table _employees._ In this, we also have to specify the column names and the data types those columns would be accepting.
 
 How do you run this in pgAdmin though? 
