@@ -300,7 +300,9 @@ Wait a minute though, there’s a more official and formal way to make sure that
 
 We do that by simply running:
 
+```
 SELECT * FROM employees;
+```
 
 That’s it. The asterisk symbol is a wildcard that tells SQL to select EVERYTHING from the employees table. When you execute the query by hitting that Play/Lightning icon above, you should expect this in the output tab below.
 
@@ -312,12 +314,14 @@ As you can see it shows the table with column names and their data types. But it
 
 Here’s how you can insert data into a column in SQL:
 
+```
 INSERT INTO employees (first_name, last_name, email_id)   
 VALUES   
 (‘John’, ‘Smith’, ‘johnsmith@genericname.com’),  
  (‘Harry’, ‘Potter’, ‘harrypotter@hogwarts.com’);  
   
 SELECT * FROM employees;
+```
 
 **Note:** In SQL, single quotes are used to identify strings. If you were to use double quotes “”, you’d have gotten an error. That is because double quotes are used for SQL identifiers like column or table names.
 
@@ -335,6 +339,7 @@ What if you tried to enter values that are not what the columns are expecting? L
 
 Let’s create another table with a wider set of column types.
 
+```
 CREATE TABLE teachers (  
  id bigserial,  
  first_name varchar(25),  
@@ -345,6 +350,7 @@ CREATE TABLE teachers (
  );  
   
 SELECT * FROM teachers
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*hR1AMiNjHw-fxxrFVJ8UtQ.png)
 
@@ -355,12 +361,14 @@ Next we use a familiar data type, varchar, to take in the values of names of tea
 To accept dates, we are using _date_ datatype that takes values in the default format **yyyy-mm-dd**. Then, finally we have the salaries of the teachers as _money_ datatype. The money datatype in PostgreSQL is used to store money values with a fixed precision value.  
 Let’s try to insert some values in our newly created table to understand how they differ for each variable and what the output looks like.
 
+```
 INSERT INTO teachers (first_name, last_name, school, joining_date, salary) VALUES  
 (‘Matt’, ‘Smith’, ‘JPV School’, ‘2020–11–08’, 35120),  
 (‘Lizzy’, ‘Bennet’, ‘JPV School’, ‘2019–12–15’, 38230.22),  
 (‘Terry’, ‘Crux’, ‘JPV School’, ‘2021–06–14’, ‘$32000.00’);  
   
 SELECT * FROM teachers;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*wpUPerzJQ-gaHQij55yPJw.png)
 
@@ -446,6 +454,7 @@ The real data type can store upto six decimal digits whereas double precision ca
 
 To get a clearer understanding of their working and the difference from the fixed point numbers, let’s take an example:
 
+```
 CREATE TABLE number_example (  
 fixed_col numeric(15, 5),  
 real_col real,  
@@ -458,6 +467,7 @@ VALUES
 (5.423242344, 5.423242344, 5.423242344);  
   
 SELECT * FROM number_example;
+```
 
 When you execute the query above, the following table is shown in the output:
 
@@ -484,6 +494,7 @@ For date and time, PostgreSQL provides major data types:
 
 Let’s take an example:
 
+```
 CREATE TABLE date_time_example (  
 timestamp_col timestamp with time zone,  
 interval_col interval  
@@ -496,6 +507,7 @@ VALUES
 (now(), '2 weeks');  
   
 SELECT * FROM date_time_example;
+```
 
 When you run the above query, you get this:
 
@@ -515,11 +527,13 @@ We have seen the working of timestamp property till now quite enough. But what�
 
 Let’s see that by running the following query:
 
+```
 SELECT   
 timestamp_col,   
 interval_col,  
 timestamp_col + interval_col AS time_after_col  
 FROM date_time_example;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*98j2rcch85Tr6MSu39q7KA.png)
 
@@ -533,6 +547,7 @@ i). **Arrays**
 
 Data in rows can also be stored as Arrays in PostgreSQL. They are variable and multidimensional. To input into an array, you can use {} braces to represent a single input. For example:
 
+```
 CREATE TABLE sal_emp (  
     name            text,  
     pay_by_quarter  integer[],  
@@ -551,6 +566,7 @@ INSERT INTO sal_emp
   
   
 SELECT * FROM sal_emp;
+```
 
 Running the above query yields the following results.
 
@@ -580,6 +596,7 @@ When this query is executed, a new object in a database is created e.g., a table
 
 The syntax to create a table is the following:
 
+```
 CREATE TABLE table_name (  
   col1 column_type,  
   col2 column_type,  
@@ -589,17 +606,19 @@ CREATE TABLE table_name (
 );
 
 ALTER query
+```
 
 This query is used to modify how the schema of your database or the database components are designed. For example, after creating a table, you might want to change the data type of a column, maybe change the name of the column, etc.
 
 Let’s see what the syntax of ALTER statement is:
 
-ALTER TABLE table_name <expression>
+**ALTER TABLE table_name <expression>**
 
 The first words in the statement above makes the table modifiable. But what to do after that? That’s what <expression> represents above.
 
 Here’s an example of what you can do:
 
+```
 CREATE TABLE example   
 (  
   col1 text,  
@@ -609,6 +628,7 @@ CREATE TABLE example
 ALTER TABLE example ADD COLUMN col3 text;  
   
 SELECT * FROM example;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*fv6PDZDiJeHyfPSy2o0JhQ.png)
 
@@ -631,21 +651,21 @@ The DROP statement in SQL is used to wipe out a table, database, a constraint, a
 
 You can drop an entire table or a database using single query. The syntax is:
 
-DROP TABLE table_name
+**DROP TABLE table_name**
 
 The above query will delete/drop the table you mention. But what if you want to do something less spectacular than that? What if you only want to remove a single column?
 
 That can be achieved using a combination of ALTER and DROP.
 
-ALTER TABLE table_name DROP COLUMN col_name
+**ALTER TABLE table_name DROP COLUMN col_name**
 
-TRUNCATE Query
+**TRUNCATE Query**
 
 The TRUNCATE query has quite a similar function to DROP. It empties the table or other object but doesn’t remove its structure.
 
 This is what the TRUNCATE syntax looks like: 
 
-TRUNCATE table_name;
+**TRUNCATE table_name;**
 
 Using the above query will empty whatever data the table had but if you do SELECT * FROM table_name, then you’d still get an empty table with preserved structure.
 
@@ -672,10 +692,12 @@ Let’s explore the SELECT query more.
 
 A SELECT query can have 4 parts. 
 
+```
 SELECT <projection>  
 FROM <table name>  
 WHERE <boolean expression>  
 ORDER BY <columns names>
+```
 
 We will focus on the projection part first to get started. 
 
@@ -683,6 +705,7 @@ For exploration, let’s setup a table first! You would want to copy the csv fil
 
 Link to the **employees.csv**: [**_https://github.com/aad1tya/SQL-Book_**](https://github.com/aad1tya/SQL-Book)
 
+```
 CREATE TABLE employee (  
  EMPLOYEE_ID smallint,  
  FIRST_NAME varchar(30),  
@@ -701,6 +724,7 @@ FROM '/employees/employees.csv'
 WITH (FORMAT CSV, HEADER);  
   
 SELECT * FROM employee;
+```
 
 This is what the output looks like when you run the above query. 
 
@@ -714,8 +738,10 @@ The asterisk * in the above query basically tells SQL to grab everything from th
 
 What if you want to get only a few selected columns?
 
+```
 SELECT first_name, last_name, salary  
 FROM employee;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*j6JfXSpoQWIROIjZGOA2sw.png)
 
@@ -723,22 +749,28 @@ Our query, instead of using a wildcard, just tells SQL to get all of the mention
 
 Using the “AS” keyword, you can provide an alias for the column you want to retrieve as many times, the column names doesn’t make sense/look good when retrieved.
 
+```
 SELECT first_name as EmployeeName  
 FROM employee;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*PyIIg2HLtuF-Ca6nXJJIpQ.png)
 
 What if you want to provide an alias that has a space in it, because an alias should be able to look like normal English without any underscores, right? Well, if you try to do that normally, like this — 
 
+```
 SELECT first_name as "First Name"  
 FROM employee;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*7FdnFmWx8MZOjpGOMQUR4Q.png)
 
  — SQL will follow you up with an error. To avoid this, and to make your query run successfully, you’d have to wrap up your alias in double quotes like this:
 
+```
 SELECT first_name as "First Name"  
 FROM employee;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*GzR4jhGzpKmUPsDMYjYsQQ.png)
 
@@ -746,22 +778,27 @@ It works! 
 
 Similarly, you can provide aliases for multiple columns one by one like this:
 
+```
 SELECT first_name AS "First Name", last_name AS "Last Name"  
 FROM employee;
-
+```
 ![](https://cdn-images-1.medium.com/max/1000/1*VEs5vtY4ogCShMJcXEDMGw.png)
 
 **NOTE:** You are not changing anything while running the SELECT statement. 
 
 What if I told you “AS” is optional? It’s true, you can provide an alias without AS. The following query will also provide the same results as the above but you should avoid this approach of writing queries as it doesn’t read well.
 
+```
 SELECT first_name "First Name", last_name "Last Name"  
 FROM employee;
+```
 
 Another what if. What if you want to get the full name of an employee in a single column. You can do that in PostgreSQL like this.
 
+```
 SELECT first_name || ' ' || last_name AS "Full Name"  
 FROM employee;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*o0CjrzOnqWod7uAdtEoTPg.png)
 
@@ -769,8 +806,10 @@ Basically, the || operator joins two mentioned columns with a space in between. 
 
 You can add or subtract two column values as well. Let’s say, for example, you want to find the number of days an Employee has stayed at the current organization. That can be done using the following query:
 
+```
 SELECT now()::date - hire_date AS "Employee Days"  
 FROM employee;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*MH7f4e1KE80aLpKWxl04EQ.png)
 
@@ -779,8 +818,10 @@ So, to get only the date we use “::date” which converts the timestamp to dat
 
 You can find the difference between two date. Similarly, you can do the same with integers, you can add them, you can subtract them. But before you start doing that, first get to know casting in PostgreSQL as dealing with integers and decimals can get finnicky. 
 
+```
 SELECT first_name, last_name, job_id, cast(salary as bigint)   
 FROM employee;
+```
 
 In the original table, salary is mentioned as a numeric with a fixed decimal point. Using the above query, we convert the salary table to integer and get this:
 
@@ -796,9 +837,11 @@ Now you know how to deal with column projections along with SELECT statement. In
 
 I want to find out which employees get paid more than 10000 as a salary. How do I do that? That’s where conditions in SQL come in.
 
+```
 SELECT first_name, last_name, salary  
 FROM employee  
 WHERE salary > 10000;
+```
 
 Running this gets us the expected results, i.e., we get a table with first names, last names, and salaries of employees that are paid more than 10000. 
 
@@ -808,9 +851,11 @@ Running this gets us the expected results, i.e., we get a table with first names
 
 That can be done easily using:
 
+```
 SELECT first_name, last_name, hire_date, job_id  
 FROM employee  
 WHERE job_id = 'IT_PROG';
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*umsIfKQt8z6RS-4UKmoiuw.png)
 
@@ -818,9 +863,11 @@ Using a single WHERE statement is quite straightforward. Let’s say you want to
 
 That’s where AND operator comes in. 
 
+```
 SELECT first_name, last_name, hire_date, job_id  
 FROM employee  
 WHERE job_id = 'IT_PROG' AND hire_date > '2006-01-01';
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*e3bJznXhc6U8VBecr634wA.png)
 
@@ -830,9 +877,11 @@ Question. Find the employees who are either clerks _OR_ work in the IT departmen
 
 It’s similar to using the AND operator. 
 
+```
 SELECT first_name, last_name, hire_date, job_id  
 FROM employee  
 WHERE job_id = 'IT_PROG' OR job_id = 'ST_CLERK'; 
+```
 
 Running the above query returns over 20 results (hidden in the picture below) as we have a lot of clerks. It basically returns values that are true for either IT_PROG or ST_CLERK.
 
@@ -857,9 +906,11 @@ The comparison operator for that exact task is, you guessed it, the BETWEEN oper
 
 Let’s take an example by asking the question that who are the employees who earn in a certain range:
 
+```
 SELECT first_name, last_name, salary  
 FROM employee  
 WHERE salary BETWEEN 4000 AND 8000;
+```
 
 The above query returns the following output.
 
@@ -867,18 +918,22 @@ The above query returns the following output.
 
 You got a task assigned, find the employees who have the ID 111, 121, 112, and 123. The first answer your mind will come up with might look like this:
 
+```
 SELECT employee_id, first_name, last_name  
 FROM employee  
 WHERE employee_id = 111 OR employee_id = 121 OR  
 employee_id = 112 OR employee_id = 123;
+```
 
 Sure, this will return the desired result, but there’s a better, more sophisticated way to ask the same question. 
 
 Use the “IN” operator. 
 
+```
 SELECT employee_id, first_name, last_name  
 FROM employee  
 WHERE employee_id IN (111, 121, 112, 123);
+```
 
 Both return the same result below but the latter looks cleaner and you can add as many values as you want. 
 
@@ -896,9 +951,11 @@ LIKE and ILIKE
 
 The only difference between LIKE and ILIKE is that LIKE is case-sensitive (for it, “hello” and “HELLO”) are different. ILIKE on the other hand is case-insensitive, lower and uppercase letters mean the same to it.
 
+```
 SELECT first_name, last_name, job_id, phone_number  
 FROM employee  
 WHERE phone_number LIKE '515%'
+```
 
 The above query returns the following results:
 
@@ -908,17 +965,20 @@ As you can see, we only got employees that have phone numbers starting with 515.
 
 Similarly, you can have employees with phone numbers that start with 515 and end with 9 with whatever comes between as a wildcard. Like this:
 
+```
 SELECT first_name, last_name, job_id, phone_number  
 FROM employee  
 WHERE phone_number LIKE '515%9'
-
+```
 ![](https://cdn-images-1.medium.com/max/1000/1*2zz0uIgoE_avml9v38IUVw.png)
 
 You can also search for values that contain a specific letter/letters between a string. This can be done by using underscore “_” instead of “%”.
 
+```
 SELECT first_name, last_name, job_id  
 FROM employee  
 WHERE first_name LIKE '%_am_%'
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*zR-pzfHZ44sq6ZtQO4Gt8w.png)
 
@@ -938,9 +998,11 @@ Let’s say you want to find out the rows that do not match the “%_am_%” pat
 
 The NOT operator in SQL provides that exact functionality.
 
+```
 SELECT first_name, last_name, job_id  
 FROM employee  
 WHERE first_name NOT LIKE '%_am_%'
+```
 
 The query returns the following result that doesn’t include the two employees with the name “James”.
 
@@ -972,6 +1034,8 @@ The job_ids doesn’t give us a proper idea of what the person actually does. Su
 
 Here’s how you can do that using CASE.
 
+
+```
 SELECT first_name, last_name, job_id, ---Notice the comma after the last column  
 CASE  
   WHEN job_id LIKE 'IT%' THEN 'Programmer'  
@@ -980,6 +1044,7 @@ CASE
   ELSE 'Unknown'  
 END job_title  
 FROM employee;
+```
 
 This query creates a column in the result that enters Clerk against all the job_ids that have the word “CLERK” in them, Programmer against the IT people, and Manager against all the managers. 
 
@@ -995,25 +1060,31 @@ It’s not a proper database management tool if it does not have basic functiona
 
 The ORDER BY clause in SQL sorts the table by the column/columns mentioned. Let’s have a look.
 
+```
 SELECT first_name, last_name  
 FROM employee  
 ORDER BY first_name;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*6_dbCSOm-FUBjhSH1pKFzA.png)
 
 Our table got sorted relative to the first_name. By default, the sorting gets done in the Ascending order. You can specify to SQL the type of sorting you want to do like this:
 
+```
 SELECT first_name, last_name  
 FROM employee  
 ORDER BY first_name DESC;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*EqCmhsVbUMwOeJSJrsZ99A.png)
 
 You can do the same with the numbers as well. Let’s see who earns the most in our database!
 
+```
 SELECT first_name, last_name, money  
 FROM employee  
 ORDER BY money DESC;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*NoRbT56d-WFOxPzDhfk7xA.png)
 
@@ -1021,9 +1092,11 @@ Steven King. Fitting.
 
 Similar to sorting on the basis of a single column, you can also sort based on multiple columns. How does _that_ work?
 
+```
 SELECT first_name, last_name  
 FROM employee  
 ORDER BY first_name, last_name DESC;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*uONiY4mueI1kjVODBDTkPQ.png)
 
@@ -1031,16 +1104,20 @@ Our query first sorts the table according to the first_name, then if two or more
 
 Let’s see the total number of distinct values for job_ids we have. You can do that using the DISTINCT keyword.
 
+```
 SELECT DISTINCT job_id  
 FROM employee  
 ORDER BY job_id;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*54Da2bCcfBAcIkp0JogJDA.png)
 
 We have 17 different job_ids in our table. But is their a better way to do this instead of checking the index? Yes, there is. It is by using COUNT.
 
+```
 SELECT COUNT (DISTINCT job_id)  
 FROM employee;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*Ng6py2228qo1Fz4EBT6YAQ.png)
 
@@ -1048,9 +1125,11 @@ COUNT keyword counts the values returned by the SELECT projection. The count is 
 
 Let’s see what does LIMIT keyword do. It does what it is supposed to do. It basically returns the first N number of rows out of your query result. Taking an example would make you understand it better.
 
+```
 SELECT first_name, last_name  
 FROM employee  
 LIMIT 10;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*VncwG2Nm--vMOF4gymVZdA.png)
 
@@ -1066,39 +1145,51 @@ These aggregate functions are often used along with GROUP BY statement. You’d 
 
 But first let’s see each aggregate function with an example. How’d you go about finding the average salary from the employee table? Well, for that SQL has a standard function called avg(). Let’s have a look.
 
+```
 SELECT avg(salary) AS average_salary  
 FROM employee;
+```
 
 You can easily calculate the maximum value from a column using max() like this:
 
+```
 SELECT max(salary)  
 FROM employee;
+```
 
 The max() function returns the maximum value from a column. To get all of the employees that have the salary equal to maximum salary, you could either sort the table in descending order with respect to the salary column and then limit the output to just get the right number of employees (**_this would be wrong_**) OR you can use the max() function like this:
 
+```
 SELECT first_name, last_name, salary  
 FROM employee  
 WHERE salary = (SELECT max(salary) FROM employee);
+```
 
 Now, I realized, was a good time to introduce to you that you can use the output of an another SELECT statement to use for comparison in a WHERE condition.
 
 Similar to the max() function, we have the min() function that returns the smallest value from the column. Asking the same question we asked above but replace the maximum with minimum.
 
+```
 SELECT first_name, last_name, salary  
 FROM employee  
 WHERE salary = (SELECT max(salary) FROM employee);
+```
 
 The SUM() function tells you the sum of an entire column. And this is the perfect time to also understand the working of the GROUP BY clause. Let’s first understand SUM() function with an example:
 
+```
 SELECT sum(salary) AS company_spending  
 FROM employee;
+```
 
 Now, a question, how much the company spends on each job role. That’s where the GROUP BY statement comes in. Watch attentively.
 
+```
 SELECT sum(salary) AS job_spending  
 FROM employee  
 GROUP BY job_id  
 ORDER_BY job_id;
+```
 
 See how it sums salaries from each job role separately? That is because the GROUP BY statement groups by the table from each job_id and then runs the sum() function on them as it is the second one that gets executed. That’s how things are with SQL. It’s the weird employee but it gets the job done.
 
@@ -1108,10 +1199,12 @@ CTEs or Common Table Expressions allow us to simplify the queries that we write 
 
 Because of the way SQL processes a query, if you write the following in the Query Editor, it will result in an error.
 
+```
 SELECT job_id, CAST (avg(salary) as bigint) AS avg_salary  
 FROM employee  
 GROUP BY job_id  
 WHERE avg_salary > 5000; --- SQL doesn't know that avg_salary exists yet.
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*rGqyrKueUgnUq4idnk1Dcg.png)
 
@@ -1119,6 +1212,7 @@ What we wrote above was a table values expression. Any query that returns a tabl
 
 Let’s see how.
 
+```
 WITH avg_salary_table AS ( --- avg_salary_table is the new table created  
   SELECT job_id, CAST(avg(salary) as bigint) AS avg_salary  
   FROM employee  
@@ -1127,6 +1221,7 @@ WITH avg_salary_table AS ( --- avg_salary_table is the new table created
   
 SELECT * FROM avg_salary_table --- WITH is followed by SELECT and  
 WHERE avg_salary > 5000; ---       it must have table alias WITH used.
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*MrNfW1FLmjMTzCs8v5PPsw.png)
 
@@ -1139,6 +1234,7 @@ To explain it further, if employee A works in IT and employee B works as a clerk
 
 It can be done with the help of the WITH clause. Here’s how:
 
+```
 WITH table_one as ( --- A basic SELECT query to get some relevant columns  
   SELECT first_name, last_name, salary, job_id  
   FROM employee  
@@ -1151,6 +1247,7 @@ table_two as ( --- A query that calculates each job_id's avg salary
 SELECT t1.*, t2.avg_salary --- Wherever job_id matches, normally join the two tables  
 FROM table_one AS t1 JOIN table_two AS t2 ON t1.job_id = t2.job_id  
 ORDER BY t1.first_name;
+```
 
 You can create a series of table separated by comma with the WITH clause. Each table created will have an alias that can be used later in the SELECT query.
 
@@ -1166,6 +1263,7 @@ They come right after the SELECT statement and are part of the projection.
 
 Here’s the syntax of the WINDOW functions.
 
+
 **_window_function_name() OVER (  
 <columns>  
 ORDER BY <columns>  
@@ -1179,10 +1277,12 @@ There are 3 types of WINDOW functions:
 
 To understand the superiority of the window functions, I am going to write the last query I wrote using WITH clause again using a window function. The type of Window function I am going to use below is as an Aggregate window function.
 
+```
 SELECT first_name, last_name, job_id, salary,  
   CAST(AVG(salary) OVER (PARTITION BY job_id) AS BIGINT) AS avg_salary_jobid  
 FROM employee  
 ORDER BY first_name;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*i2GpGbRB5-4EoUE4J9ZZYQ.png)
 
@@ -1195,20 +1295,24 @@ Let me explain the query:
 
 You can also use multiple Window functions in a single query of course. When using multiple window functions that do the same partitions, it’s always nice to use an alias for them then use the WINDOW clause to define that alias. For example, instead of writing,
 
+```
 SELECT first_name, last_name, job_id, salary,  
   CAST(AVG(salary) OVER (PARTITION BY job_id) AS BIGINT) AS avg_salary_jobid,  
   CAST(MAX(salary) OVER (PARTITION BY job_id) AS BIGINT) AS max_salary_jobid  
 FROM employee  
 ORDER BY first_name;
+```
 
 You can write,
 
+```
 SELECT first_name, last_name, job_id, salary,  
   CAST(AVG(salary) OVER part AS bigint), --- "part" is the name of the alias  
   CAST(MAX(salary) OVER part AS bigint)  
 FROM employee  
 WINDOW part AS (PARTITION BY job_id) --- we use "part" again to define partitions  
 ORDER BY first_name;
+```
 
 **PostgreSQL Views**
 
@@ -1218,10 +1322,12 @@ Views in SQL gives you the ability to store new tables out of SELECT statements.
 
 Let’s create one.
 
+```
 CREATE VIEW it_people as  
   SELECT *   
   FROM employee  
   WHERE job_id LIKE 'IT%'
+```
 
 When you run the above query, you don’t see any output. That’s because whatever we selected got saved up for the view. If you are using PostgreSQL, if you refresh the left pane, you’d see the view created like this:
 
@@ -1229,8 +1335,10 @@ When you run the above query, you don’t see any output. That’s because whate
 
 And if you run this query:
 
+```
 SELECT *  
 FROM it_people
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*SpLodIOPX58Avy6Mr9M75g.png)
 
@@ -1258,9 +1366,11 @@ OR
 
 For example, creating a temporary table based on the employee table would look something like this:
 
+```
 CREATE TEMPORARY TABLE employee_temp (LIKE employee);  
   
 SELECT * FROM employee_temp;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*7BgsRztO2K4_hjvXIKGXBw.png)
 
@@ -1268,10 +1378,12 @@ The employee_temp is a table that has no data, from the query above it only copi
 
 To also copy the data, you’d have to run:
 
+```
 INSERT INTO employee_temp  
 SELECT * FROM employee;  
   
 SELECT * FROM employee_temp;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*j5BDMvNtkI8w97wbO-nsew.png)
 
@@ -1297,6 +1409,7 @@ In that too, you can either insert only the values and values & columns both tog
 
 Let’s take an example of both. First, let’s create a new table. 
 
+```
 CREATE TABLE persons (  
 id bigserial,  
 first_name varchar(30),  
@@ -1304,21 +1417,25 @@ last_name varchar(30),
 email_id varchar(80),  
 phone_num varchar(10)  
 )
+```
 
 After the table has been created, let’s start inserting!
 
 INSERT only values.
 
+```
 INSERT INTO persons (first_name, last_name, email_id, phone_num)  
 VALUES  
 ('Mary', 'Sue', 'marysue@gmail.com', '1245681901');  
   
 SELECT * FROM persons;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*4UTNFEdbqZh9jowwlL-q-Q.png)
 
 That was easy! You can also add multiple rows by separating the values with a comma. Like this:
 
+```
 INSERT INTO persons (first_name, last_name, email_id, phone_num)  
 VALUES  
 ('Mary', 'Sue', 'marysue@gmail.com', '1245681901'),  
@@ -1326,6 +1443,7 @@ VALUES
 ('Mary', 'Sue', 'marysue@gmail.com', '1245681901');  
   
 SELECT * FROM persons;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*PCCmK5iG31o_AhgbdnN8Iw.png)
 
@@ -1333,11 +1451,13 @@ As you can see, 3 more columns got added to our database!
 
 You can also specifically add values to columns if you don’t have enough data present. For example, maybe you don’t the person’s last name. 
 
+```
 INSERT INTO persons (first_name, email_id, phone_num)  
 VALUES  
 ('Mary', 'marysue@gmail.com', '1245681901')  
   
 SELECT * FROM persons;
+```
 
 ![](https://cdn-images-1.medium.com/max/1000/1*bJBYfhCtLy0gabdMx75UFA.png)
 
@@ -1360,9 +1480,11 @@ As the names might suggest, the percentile_disc() only checks for a discrete val
 
 percentile_cont() on the other hand finds the continuous value. If we have two values in the middle, it will give us the average of those two values. This fits the definition of what a Median is.
 
-The query 
+The query
 
+```
 _percentile_cont(0.5)_ WITHIN GROUP (ORDER BY “column_name”)
+```
 
 returns the value of the 50th percentile in the column, hence the median. But what about all the keywords like “WITHIN GROUP” and why are we using “ORDER BY”. As we know, that ORDER BY sorts our database in ascending by default. We also know that to calculate Median, we should have data that is sorted. 
 
@@ -1378,9 +1500,11 @@ Similar to the Median, it is not a part of the standard SQL but Postgresql provi
 
 The syntax is very similar to that of calculating Median.
 
+```
 _SELECT mode() WITHIN GROUP (ORDER BY p0010001)_
 
 _FROM table_name;_
+```
 
 The above query sorts the table and finds mode from within the group of the sorted column.
 
@@ -1398,21 +1522,25 @@ To work with multiple tables at once, we have to join them. A JOIN in SQL allows
 
 See how I capitalized above? That’s because it’s an SQL keyword. Let’s see what the proper syntax of JOINing two tables look like.
 
+```
 _SELECT *_
 
 _FROM table_a JOIN table_b_
 
 _ON table_a.key_column = table_b.foreign_key_column;_
+```
 
 When you hit that lightning bolt to execute the above query, SQL selects everything from the first table and then checks if values in the mentioned column of the first table matches the values of the mentioned column of the second table. If they match, then great, join them!
 
 Of course, you can do more complicated condition to join the tables. Like, if the values of a column in the first table are smaller than the second one’s _then_ join them.
 
+```
 _SELECT *_
 
 _FROM table_a JOIN table_b_
 
 _ON table_a.key_column <= table_b.foreign_key_column;_
+```
 
 Joining tables by comparing lesser than or greater than operator will be always a rare case because of how less the need/application arises, but it’s always there if you need it.
 
@@ -1429,6 +1557,7 @@ For this single striking purpose, all of the key column values must be unique. T
 But what _can_ be important is let’s say an ID, a unique code for each row of a table. For example, you can have table about customers’ information, their names, contact details, etc. Each row in this table has a unique ID. Another table can have information on when the customers visited, but instead of using customer’s name, we can use an ID to identify them.  
 This way both of the columns will be related.
 
+```
 CREATE TABLE customers   
 ( Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),   
  first_name varchar(25),  
@@ -1446,6 +1575,7 @@ SELECT Id FROM customers;
   
 INSERT INTO visit_date VALUES  
 (“2020–05–11”, “2020–05–12”);
+```
 
 Following the above example, you can have two tables with a column with similar keys.
 
@@ -1462,6 +1592,7 @@ To follow the relational database model, we are going to create a single sharing
 
 Let’s have a look at the code.
 
+```
 ---1  
 CREATE TABLE subjects (   
 subject_id bigserial,  
@@ -1489,6 +1620,7 @@ VALUES
 ('Mary', 'Thomas', 41000, 2),  
 ('Carly', 'Shelby', 35000, 2);
 
+```
 ---
 
 Let’s see what happened in each of the queries above.
@@ -1521,9 +1653,11 @@ When you JOIN two tables using the query mentioned earlier, SQL joins all of the
 
 For example,
 
+```
 SELECT *  
 FROM teachers JOIN subjects  
 ON teachers.subject_id = subjects.subject_id;
+```
 
 The above query returns all the rows where both of the IDs are common. Meaning you’d get a table that contains all the information with combination of teachers teaching specific subjects instead of just the subject ids. Like this:
 
