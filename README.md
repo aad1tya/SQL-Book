@@ -20,6 +20,7 @@ This is more of a brain dump of my learning than something I wrote because of ma
     - [Character](#character)
     - [Numeric](#numeric)
     - [Decimals](#decimals)
+    - [Date and Time](#date--time)
 
 
 Let’s do a brief introduction. Meet SQL.
