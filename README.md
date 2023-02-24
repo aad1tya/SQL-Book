@@ -7,20 +7,38 @@ This is more of a brain dump of my learning than something I wrote because of ma
 
 ## INDEX 
 
-- [What is it?](#sqlwhat-isit)
-- [Why use SQL?](#but-why-usesql)
-- [Fields of SQL use](#fields-where-sql-is-used-extensively)
-- [SQL: The HOW](#sql-thehow)
-- [Database Management Systems](#database-management-systemsand-why-we-are-going-to-use-postgresql)
-- [How to install PostgreSQL](#how-to-install-postgresql)
+- [INDEX](#index)
+  - [SQL — What is it?](#sqlwhat-isit)
+  - [But why use SQL?](#but-why-usesql)
+  - [SPECIFYING THE APPLICATIONS OF SQL](#specifying-the-applications-of-sql)
+  - [Fields where SQL is used extensively](#fields-where-sql-is-used-extensively)
+  - [SQL: The HOW](#sql-thehow)
+  - [Database Management Systems — and why we are going to use Postgresql](#database-management-systemsand-why-we-are-going-to-use-postgresql)
+    - [MYSQL](#mysql)
+    - [MARIADB](#mariadb)
+    - [ORACLE](#oracle)
+    - [POSTGRESQL — The one we’ll use](#postgresqlthe-one-well-use)
+    - [MSSQL](#mssql)
+  - [How to install PostgreSQL](#how-to-install-postgresql)
+    - [Install PostgreSQL for Windows/Linux](#install-postgresql-for-windowslinux)
     - [Running your first query](#running-your-first-query)
-    - [Inserting data into a column](#inserting-data-into-a-column-in-sql)
-- [PostgreSQL Datatypes](#postgresql-datatypes)
-    - [Boolean](#boolean)
-    - [Character](#character)
-    - [Numeric](#numeric)
-    - [Decimals](#decimals)
-    - [Date and Time](#date--time)
+    - [Inserting data into a column in SQL](#inserting-data-into-a-column-in-sql)
+  - [PostgreSQL Datatypes](#postgresql-datatypes)
+    - [BOOLEAN](#boolean)
+    - [CHARACTER](#character)
+    - [NUMERIC](#numeric)
+    - [DECIMALS](#decimals)
+    - [DATE \& TIME](#date--time)
+    - [_MORE TYPES IN POSTGRESQL_](#more-types-in-postgresql)
+  - [SQL QUERIES](#sql-queries)
+    - [Data Definition Queries:](#data-definition-queries)
+      - [CREATE query](#create-query)
+      - [DROP query](#drop-query)
+      - [TRUNCATE Query](#truncate-query)
+    - [Data Query Language and Data Exploration:](#data-query-language-and-data-exploration)
+    - [SQL Pattern Matching](#sql-pattern-matching)
+  - [**SQL as Data Manipulation Language**](#sql-as-data-manipulation-language)
+  - [**JOINING TABLES IN A RELATIONAL DATABASE — The good stuff**](#joining-tables-in-a-relational-databasethe-goodstuff)
 
 
 Let’s do a brief introduction. Meet SQL.
@@ -592,7 +610,7 @@ All the statements in Data Definition category are used to define or change data
 
 When you are creating an application with SQL to manage your data in the back end. The user of your application must not be able to access these queries from their side. Everything should be managed by the owner.
 
-CREATE query  
+##### CREATE query  
 When this query is executed, a new object in a database is created e.g., a table, a function, etc. You can even a create a new database using the CREATE statement.
 
 The syntax to create a table is the following:
@@ -646,7 +664,7 @@ This produces the expected results changing the third column’s data type to va
 
   
 
-DROP query
+##### DROP query
 
 The DROP statement in SQL is used to wipe out a table, database, a constraint, a column, etc.
 
@@ -660,13 +678,15 @@ That can be achieved using a combination of ALTER and DROP.
 
 **ALTER TABLE table_name DROP COLUMN col_name**
 
-**TRUNCATE Query**
+##### TRUNCATE Query
 
 The TRUNCATE query has quite a similar function to DROP. It empties the table or other object but doesn’t remove its structure.
 
 This is what the TRUNCATE syntax looks like: 
 
+```
 **TRUNCATE table_name;**
+```
 
 Using the above query will empty whatever data the table had but if you do SELECT * FROM table_name, then you’d still get an empty table with preserved structure.
 
